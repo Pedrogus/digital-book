@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  padding: auto;
 }
 
 .App-logo {
@@ -26,6 +27,87 @@
 
 .App-link {
   color: #61dafb;
+}
+
+.books-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    padding: 20px;
+}
+
+/* 📕 Container de Cada Livro */
+.book-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 150px;
+    padding: 10px;
+    background-color: #f8f8f8;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+/* 🖼️ Imagem do Livro */
+.book-container img {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+/* 📖 Título do Livro */
+.book-container h3 {
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+    text-align: center;
+    margin-bottom: 5px;
+}
+
+/* ✒️ Nome do Autor */
+.book-container p {
+    font-size: 14px;
+    color: #555;
+    text-align: center;
+}
+
+/* 🖱️ Efeito de Hover */
+.book-container:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+}
+
+/* 🔎 Estilo do Botão de Busca */
+.input-container {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+    justify-content: center;
+}
+
+button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+input[type="text"] {
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    width: 300px;
+    font-size: 14px;
 }
 
 @keyframes App-logo-spin {
