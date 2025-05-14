@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { cache, useEffect, useState } from "react";
 import BooksList from "./BooksList";
 
  const SearchBook = () => {
@@ -7,6 +7,7 @@ import BooksList from "./BooksList";
      const [input, setInput] = useState('');
      const [searchQuery, setSearchQuery] = useState('');
      const [loading, setLoading] = useState(false);
+     const [cache, setCache] = useState({});
 
      useEffect(() => {
         if(input) 
@@ -19,11 +20,20 @@ import BooksList from "./BooksList";
         const getBooks = async (query) => {
             try {
             setLoading(true);
-            const res = await fetch(`https://gutendex.com/books?search=${query}`);
+                if(cache[query]) {
+                    Setbooks(cache[query]);
+                    setLoading(false);
+                    return;
+                }
+
+            const res = await fetch(`https://gutendex.com/books?search=${query}&page=1`);
             const data = await res.json();
-            console.log(data.results);
+                console.log(data.results);
+
             if(data.results) {
-                Setbooks(data.results.slice(0, 15));
+                const results = data.results.slice(0,10);
+                Setbooks(results);
+                setCache((prevCache) => ({...prevCache, [query]: results }));
              }
         } catch (error) {
             console.error("Error fetching books:", error);
